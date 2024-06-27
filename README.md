@@ -7,7 +7,7 @@ Descriptions of six defects from the collected drainage pipeline
 
   0: Deformation
   1: Obstacle
-  2: Rupture
+  2: Broken
   3: Disconnect
   4: Misalignment
   5: Deposition
