@@ -23,3 +23,6 @@ Descriptions of six defects from the collected drainage pipeline
 | Obstacle      | 591    | 95.0          | 98.8       | 99.2        |
 | **Total**     | 2,574  | **95.7**      | **98.0**   | **98.7**    |
 
+All experiments were conducted by employing Pytorch 1.7.0, Ubuntu 20.04 and an NVIDIA GeForce RTX 2080 Ti GPU.
+![Untitled design](https://github.com/Custom-Pipeline-Defect-Detector/A-Customized-Deep-Learning-based-Real-time-Diagnostic-Method-towards-Pipeline-Defects-and-Diseases/assets/173538015/cfae74d8-36e0-4a7c-b373-ea8c82bfcb68)
+
