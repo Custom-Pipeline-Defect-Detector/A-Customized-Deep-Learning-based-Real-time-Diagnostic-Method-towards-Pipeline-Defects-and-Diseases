@@ -13,7 +13,7 @@ Descriptions of six defects from the collected drainage pipeline
   5: Deposition
 ## YOLOv8- EfficientNet_B0 Six defect Validation Results
 
-|  Class        | Instances  | Precision (%) | Recall (%) | mAP@0.5 (%) | mAP50-95) |
+|  Class        | Instances  | Precision (%) | Recall (%) | mAP@50 (%) | mAP(50-95) |
 |---------------|------------|---------------|------------|-------------|-----------|
 | all           | 28730      | 98.5          | 98.3        | 99.4        | 97.4      | 
 | Deformation   | 5676       | 97.2          | 95.8        | 99.2        | 95.5      | 
