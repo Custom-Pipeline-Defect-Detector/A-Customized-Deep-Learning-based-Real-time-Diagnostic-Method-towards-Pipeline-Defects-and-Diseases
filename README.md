@@ -26,7 +26,7 @@ Descriptions of six defects from the collected drainage pipeline
 Modified Backbones: EfficientNet_B0
 Configuration: 
 
-| Parameter        | Value            | 
+| Parameter        | Value            |                     ![Untitled design](https://github.com/Custom-Pipeline-Defect-Detector/A-Customized-Deep-Learning-based-Real-time-Diagnostic-Method-towards-Pipeline-Defects-and-Diseases/assets/173538015/cfae74d8-36e0-4a7c-b373-ea8c82bfcb68)
 |------------------|------------------|
 | save_period      | 1                |
 | batch            | `batch_size`     |
@@ -116,9 +116,5 @@ Configuration:
 | crop_fraction    | 1.0              |
 | cfg              | None             |
 | tracker          | botsort.yaml     |
-
-
-You can copy and paste this Markdown table into your GitHub README file for a nice, readable format.
-All experiments were conducted by employing Pytorch 1.7.0, Ubuntu 20.04 and an NVIDIA GeForce RTX 2080 Ti GPU.
 ![Untitled design](https://github.com/Custom-Pipeline-Defect-Detector/A-Customized-Deep-Learning-based-Real-time-Diagnostic-Method-towards-Pipeline-Defects-and-Diseases/assets/173538015/cfae74d8-36e0-4a7c-b373-ea8c82bfcb68)
 
