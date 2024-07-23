@@ -1,6 +1,6 @@
 # A-Customized-Deep-Learning-based-Real-time-Diagnostic-Method-towards-Pipeline-Defects-and-Diseases
 Drainage pipelines are vital for urban safety. Manual inspections are laborious and error-prone. 
-This paper introduces an automated defect detection system using YOLOv7 deep learning. It achieves 94.6% precision, 97.3% recall, and 98.25% mAP@0.5, 
+This paper introduces an automated defect detection system using YOLOv8 deep learning. It achieves 98.5% precision, 98.3% recall, and 99.4% mAP@50, 
 identifying six defect types and severities.
 All experiments were conducted by employing Pytorch 1.7.0, Windows 11, NVIDIA GeForce RTX A2000 Ti GPU.
 Descriptions of six defects from the collected drainage pipeline
@@ -15,18 +15,18 @@ Descriptions of six defects from the collected drainage pipeline
 
 |  Class        | Instances  | Precision (%) | Recall (%) | mAP@0.5 (%) | mAP50-95) |
 |---------------|------------|---------------|------------|-------------|-----------|
-| all           | 28730      | 98.5          | 983        | 99.4        | 97.4      | 
-| Deformation   | 5676       | 97.2          | 958        | 99.2        | 95.5      | 
-| Obstacle      | 6441       | 98.7          | 987        | 99.5        | 98.3      | 
-| Rupture       | 5933       | 96.6          | 967        | 99.3        | 93.5      | 
-| Disconnect    | 2804       | 99.6          | 992        | 99.5        | 99        | 
-| Misalignment  | 3056       | 99.1          | 997        | 99.5        | 98.7      | 
-| Deposition    | 4820       | 99.5          | 995        | 99.5        | 99.3      |
+| all           | 28730      | 98.5          | 98.3        | 99.4        | 97.4      | 
+| Deformation   | 5676       | 97.2          | 95.8        | 99.2        | 95.5      | 
+| Obstacle      | 6441       | 98.7          | 98.7        | 99.5        | 98.3      | 
+| Rupture       | 5933       | 96.6          | 96.7        | 99.3        | 93.5      | 
+| Disconnect    | 2804       | 99.6          | 99.2        | 99.5        | 99        | 
+| Misalignment  | 3056       | 99.1          | 99.7        | 99.5        | 98.7      | 
+| Deposition    | 4820       | 99.5          | 99.5        | 99.5        | 99.3      |
 
 Modified Backbones: EfficientNet_B0
 Configuration: 
 
-| Parameter        | Value            |                     ![Untitled design](https://github.com/Custom-Pipeline-Defect-Detector/A-Customized-Deep-Learning-based-Real-time-Diagnostic-Method-towards-Pipeline-Defects-and-Diseases/assets/173538015/cfae74d8-36e0-4a7c-b373-ea8c82bfcb68)
+| Parameter        | Value            |                    
 |------------------|------------------|
 | save_period      | 1                |
 | batch            | `batch_size`     |
@@ -116,5 +116,6 @@ Configuration:
 | crop_fraction    | 1.0              |
 | cfg              | None             |
 | tracker          | botsort.yaml     |
+
 ![Untitled design](https://github.com/Custom-Pipeline-Defect-Detector/A-Customized-Deep-Learning-based-Real-time-Diagnostic-Method-towards-Pipeline-Defects-and-Diseases/assets/173538015/cfae74d8-36e0-4a7c-b373-ea8c82bfcb68)
 
