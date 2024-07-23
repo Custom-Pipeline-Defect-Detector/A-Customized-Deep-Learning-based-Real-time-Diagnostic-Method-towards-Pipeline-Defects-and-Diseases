@@ -13,15 +13,15 @@ Descriptions of six defects from the collected drainage pipeline
   5: Deposition
 ## YOLOv7-Conv2Former Six Disease Recognition Details
 
-| Defect Type   | Number | Precision (%) | Recall (%) | mAP@0.5 (%) |
-|---------------|--------|---------------|------------|-------------|
-| Broken        | 532    | 92.1          | 94.9       | 96.6        |
-| Deformation   | 516    | 91.2          | 95.6       | 97.2        |
-| Disconnection | 254    | 98.4          | 99.4       | 99.8        |
-| Misalignment  | 274    | 98.5          | 99.5       | 99.6        |
-| Deposition    | 407    | 99.0          | 99.8       | 99.7        |
-| Obstacle      | 591    | 95.0          | 98.8       | 99.2        |
-| **Total**     | 2,574  | **95.7**      | **98.0**   | **98.7**    |
+|  Class        | Instances  | Precision (%) | Recall (%) | mAP@0.5 (%) | mAP50-95) |
+|---------------|------------|---------------|------------|-------------|-----------|
+| all           | 28730      | 98.5          | 983        | 99.4        | 97.4      | 
+| Deformation   | 5676       | 97.2          | 958        | 99.2        | 95.5      | 
+| Obstacle      | 6441       | 98.7          | 987        | 99.5        | 98.3      | 
+| Rupture       | 5933       | 96.6          | 967        | 99.3        | 93.5      | 
+| Disconnect    | 2804       | 99.6          | 992        | 99.5        | 99        | 
+| Misalignment  | 3056       | 99.1          | 997        | 99.5        | 98.7      | 
+| Deposition    | 4820       | 99.5          | 995        | 99.5        | 99.3      |
 
 All experiments were conducted by employing Pytorch 1.7.0, Ubuntu 20.04 and an NVIDIA GeForce RTX 2080 Ti GPU.
 ![Untitled design](https://github.com/Custom-Pipeline-Defect-Detector/A-Customized-Deep-Learning-based-Real-time-Diagnostic-Method-towards-Pipeline-Defects-and-Diseases/assets/173538015/cfae74d8-36e0-4a7c-b373-ea8c82bfcb68)
