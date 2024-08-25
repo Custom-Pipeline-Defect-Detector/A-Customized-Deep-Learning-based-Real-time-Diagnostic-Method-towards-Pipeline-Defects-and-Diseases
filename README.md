@@ -117,5 +117,37 @@ Configuration:
 | cfg              | None             |
 | tracker          | botsort.yaml     |
 
+Training Configuration:
+
+resume=True is set to continue training from a previously saved checkpoint, allowing the training process to pause and resume as needed.
+save_period=1 is configured to save the model checkpoint after every epoch, ensuring progress is tracked and the model can be recovered from failures.
+Learning Rate Modifications:
+
+cos_lr=True enables cosine learning rate decay, which helps gradually reduce the learning rate, often leading to better convergence.
+A custom initial_lr is used to align with specific dataset and model requirements.
+lrf=0.01 is set to ensure the final learning rate is lower, allowing for a smoother and more controlled reduction towards the end of training.
+Data Augmentation and Input Modifications:
+
+close_mosaic=10 disables mosaic augmentation after 10 epochs, balancing the training dynamics between different types of augmentation.
+hsv_h=0.015, hsv_s=0.7, hsv_v=0.4 adjusts the hue, saturation, and value to introduce color variations, improving robustness to changes in color.
+translate=0.1, scale=0.5 applies translation and scaling transformations, helping the model generalize across different object positions and sizes.
+flipud=0.0 and fliplr=0.5 set a 50% chance for horizontal flips, enhancing robustness to different orientations.
+erasing=0.4 enables random erasing of parts of the image, improving the model's ability to handle occlusions and partial views.
+auto_augment='randaugment' applies a series of random augmentations, providing diverse transformations to improve generalization.
+bgr=0.0 is set to avoid unnecessary color space conversions when the dataset is already in RGB format.
+Object Detection Modifications:
+
+overlap_mask=True allows for overlapping masks in segmentation tasks, improving the model's ability to handle complex object boundaries.
+mask_ratio=4 customizes the ratio for generating masks, affecting how masks are applied to the images.
+iou=0.7 sets a stricter IoU threshold for non-max suppression, reducing false positives by requiring higher overlap for detections.
+max_det=300 increases the maximum number of detections per image, which is beneficial when images contain a large number of objects.
+Miscellaneous:
+
+tracker='botsort.yaml' specifies a tracking algorithm, integrating or evaluating object tracking in addition to detection.
+visualize=True is enabled to visualize the training progress, aiding in understanding how well the model is learning and allowing for adjustments if necessary.
+workspace=4 specifies the workspace size for model export, impacting performance and compatibility during deployment.
+format='torchscript' exports the model in TorchScript format, making it easier to deploy in a PyTorch-compatible environment.
+show_labels=True, show_conf=True, show_boxes=True configures the output to display labels, confidences, and bounding boxes, which is useful for evaluating and debugging model performance.
+
 ![Untitled design](https://github.com/Custom-Pipeline-Defect-Detector/A-Customized-Deep-Learning-based-Real-time-Diagnostic-Method-towards-Pipeline-Defects-and-Diseases/assets/173538015/cfae74d8-36e0-4a7c-b373-ea8c82bfcb68)
 
