@@ -149,5 +149,6 @@ workspace=4 specifies the workspace size for model export, impacting performance
 format='torchscript' exports the model in TorchScript format, making it easier to deploy in a PyTorch-compatible environment.
 show_labels=True, show_conf=True, show_boxes=True configures the output to display labels, confidences, and bounding boxes, which is useful for evaluating and debugging model performance.
 
+
 ![Untitled design](https://github.com/Custom-Pipeline-Defect-Detector/A-Customized-Deep-Learning-based-Real-time-Diagnostic-Method-towards-Pipeline-Defects-and-Diseases/assets/173538015/cfae74d8-36e0-4a7c-b373-ea8c82bfcb68)
 
