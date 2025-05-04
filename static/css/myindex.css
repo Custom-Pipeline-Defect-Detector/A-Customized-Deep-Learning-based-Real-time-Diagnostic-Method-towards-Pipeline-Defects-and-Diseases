@@ -1,0 +1,142 @@
+/*批量上传按钮和图片*/
+.up {
+        display: inline-block;
+        vertical-align: middle;
+        border: 1px solid #eaeaea;
+        box-sizing: border-box;
+        text-align: left;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        width: 240px;
+        height: 240px;
+    }
+
+    .tips {
+        color: #999999;
+        text-align: center;
+        position: absolute;
+        bottom: 0;
+        left: 96px;
+    }
+
+    .Input {
+        position: relative;
+        width: 240px;
+        height: 240px;
+        background: url(/static/images/add.png) no-repeat center center;
+    }
+
+    .on {
+        position: relative;
+        display: inline-block;
+        text-align: left;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        width: 240px;
+        height: 240px;
+        display: none;
+        position: relative;
+        overflow: hidden;
+        line-height: 200px;
+    }
+
+    /*新增加的img*/
+    .on img {
+        width: 100%;
+        height: auto;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
+
+    .on div {
+        position: absolute;
+        height: 40px;
+        width: 100%;
+        bottom: 12px;
+        z-index: 10;
+        text-align: center;
+    }
+
+    .on div p:nth-child(1) {
+        float: left;
+        width: 50%;
+        line-height: 40px;
+        font-size: 14px;
+        cursor: pointer;
+        color: #666666;
+        background-color: #f4f4f4;
+    }
+
+    .on div p:nth-child(2) {
+        cursor: pointer;
+        float: left;
+        width: 50%;
+        font-size: 14px;
+        color: #666666;
+        line-height: 40px;
+        background-color: #f8f8f8;
+    }
+
+    .up input {
+        width: 240px;
+        height: 240px;
+        opacity: 0;
+    }
+
+    .button {
+        margin-top: 30px;
+    }
+
+    /*批量上传*/
+    .button .set {
+        display: inline-block;
+        width: 216px;
+        height: 36px;
+        background: url(/static/images/btn_upload_off.png);
+        background-size: 100% 100%;
+    }
+
+    .set input {
+        width: 216px;
+        height: 36px;
+        opacity: 0;
+    }
+
+    .submit {
+        width: 100px;
+        text-align: center;
+        margin-top: 20px;
+        border: 1px solid #333333;
+        padding: 10px 0;
+        border-radius: 4px;
+    }
+
+    table tr:nth-child(odd) {
+        background-color: whitesmoke;
+    }
+
+    /*布局*/
+    .el-header, .el-footer {
+        background-color: #B3C0D1;
+        color: #333;
+        text-align: left;
+        line-height: 60px;
+    }
+
+    .el-aside {
+        background-color: #D3DCE6;
+        color: #333;
+        text-align: center;
+        line-height: 200px;
+    }
+
+    .el-main {
+        background-color: #E9EEF3;
+        color: #333;
+        text-align: center;
+        line-height: 500px;
+    }

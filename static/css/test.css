@@ -1,0 +1,21 @@
+@import url("//unpkg.com/element-ui@2.15.11/lib/theme-chalk/index.css");
+.el-header, .el-footer {
+        background-color: #B3C0D1;
+        color: #333;
+        text-align: left;
+        line-height: 60px;
+    }
+
+    .el-aside {
+        background-color: #D3DCE6;
+        color: #333;
+        text-align: center;
+        line-height: 200px;
+    }
+
+    .el-main {
+        background-color: #E9EEF3;
+        color: #333;
+        text-align: center;
+        line-height: 800px;
+    }

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管道检测系统</title>
+    {#    以下head为了实现批量上传图片#}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="static/js/vue.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="static/css/index.css">
+    <!-- 引入组件库 -->
+    <script src="static/js/index.js"></script>
+    <script src="static/js/jquery-3.5.1.min.js"></script>
+</head>
+
+<body>
+<h3 align="center">轮询页面</h3>
+<h4 id="timenow">当前时间?</h4>
+<button id="load">获取时间</button>
+<button id="load_advice">获取修复建议</button>
+<div align="center" id="app">
+    <template>
+        <div class="wraper">
+            <template>
+                Scroll down to see the bottom-right button.
+                <el-backtop target=".wraper">
+                    <div
+                            style="{
+                        height: 100%;
+                        width: 100%;
+                        background-color: #f2f5f6;
+                        box-shadow: 0 0 6px rgba(0,0,0, .12);
+                        text-align: center;
+                        line-height: 40px;
+                        color: #1989fa;
+                    }"
+                    >
+                        UP
+                    </div>
+                </el-backtop>
+            </template>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+            <div>返回顶部</div>
+        </div>
+    </template>
+    <style scoped>
+    .wraper {
+        height: 0px;
+        overflow-x: hidden;
+    }
+</style>
+
+</div>
+
+<script type="text/javascript">
+    function gettime() {
+        $.ajax({
+            url: '/gettime',                     //从gettime这个视图函数获取数据，一会编写
+            type: 'get',                         //采用get方法
+            timeout: 10000,                      //超时时间设置为10秒
+            success: function (t) {               //成功之后的结果，这里的t是从'/gettime'视图函数获得的返回值，如果返回值有多个，可以用json
+                $('#timenow').html("当前时间为" + t)//用“当前时间为：t”代替timenow也就是上面的“当前时间?"
+            }
+        });
+    }
+
+    {#setInterval(gettime, 1000)                   //每秒刷新一次#}
+    var Main = {}
+    var Ctor = Vue.extend(Main)
+    new Ctor().$mount('#app')
+</script>
+<script>
+    export default {
+        data() {
+            return {}
+        }
+    }
+</script>
+
+</body>
+
+
+</html>

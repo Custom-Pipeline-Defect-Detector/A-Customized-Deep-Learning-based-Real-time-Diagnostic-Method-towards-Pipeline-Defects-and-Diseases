@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pipeline Ontology Model</title>
+    <script type="text/javascript" src="static\js\echarts.min.js"></script>{# vue和echarts有冲突 #}
+</head>
+<body>
+<div align="center">
+    <a href="{{ url_for("index") }}">Home Page</a>
+    <div id="container"
+         style="width: 100%;height: 900px;border: 2px solid black;margin-top: 10px;align-items: center"></div>
+</div>
+
+<script type="text/javascript">
+    {#查询所有#}
+    var neo4j_data = [{{ neo4j_data|safe }}]
+    var data1 = neo4j_data[0]['data']
+    var links1 = neo4j_data[0]['links']
+    console.log(data1)
+    console.log(links1)
+    var myChart1 = echarts.init(document.getElementById('container'));
+    {#var categories1 = [{name: "对象"}, {name: "属性"}, {name: "实例"}];#}
+    var categories1 = [{name: "Object"}];
+    option1 = {
+        // 图的标题
+        title: {
+            text: 'Pipeline Ontology Model'
+        },
+        // 提示框的配置
+        tooltip: {
+            formatter: function (x) {
+                return x.data.des;
+            }
+        },
+        // 工具箱
+        toolbox: {
+            // 显示工具箱
+            show: true,
+            feature: {
+                mark: {
+                    show: true
+                },
+                // 还原
+                restore: {
+                    show: true
+                },
+                // 保存为图片
+                saveAsImage: {
+                    show: true
+                }
+            }
+        },
+        legend: [{
+            // selectedMode: 'single',
+            data: categories1.map(function (a) {
+                return a.name;
+            })
+        }],
+        series: [{
+            type: 'graph', // 类型:关系图
+            layout: 'force', //图的布局，类型为力导图
+            symbolSize: 40, // 调整节点的大小
+            roam: true, // 是否开启鼠标缩放和平移漫游。默认不开启。如果只想要开启缩放或者平移,可以设置成 'scale' 或者 'move'。设置成 true 为都开启
+            edgeSymbol: ['circle', 'arrow'],
+            edgeSymbolSize: [2, 10],
+            edgeLabel: {
+                normal: {
+                    textStyle: {
+                        fontSize: 20
+                    }
+                }
+            },
+            force: {
+                initLayout: "circular",
+                repulsion: 1000,
+                edgeLength: [10, 50],
+                layoutAnimation: false,
+            },
+            draggable: true,
+            lineStyle: {
+                normal: {
+                    width: 2,
+                    color: '#4b565b',
+                }
+            },
+            edgeLabel: {
+                normal: {
+                    show: true,
+                    formatter: function (x) {
+                        return x.data.name;
+                    }
+                }
+            },
+            itemStyle: {//配置节点的颜色已及尺寸
+                normal: {
+                    color: "#409eff",
+                    borderWidth: 1,
+                }
+            },
+            label: {
+                normal: {
+                    show: true,
+                    textStyle: {}
+                }
+            },
+
+            // 数据
+            data: data1,
+            links: links1,
+            categories: categories1,
+        }]
+    };
+    myChart1.setOption(option1);
+</script>
+</body>
+</html>

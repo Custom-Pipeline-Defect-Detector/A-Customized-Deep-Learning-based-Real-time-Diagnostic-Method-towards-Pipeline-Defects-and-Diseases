@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>result</title>
+    <script src="static/js/vue.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="static/css/index.css">
+    <!-- 引入组件库 -->
+    <script src="static/js/index.js"></script>
+    <script src="static/js/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+<div align="center" id="el-table">
+    <el-divider>
+{#        <el-tag type="success">Repair Suggestion</el-tag>#}
+        <el-tag type="success">修复建议</el-tag>
+    </el-divider>
+    <template>
+        <el-table
+                :data="{{ advice_list }}"
+                :row-class-name="tableRowClassName"
+                stripe>
+            <el-table-column
+                    prop="attribute"
+                    label="参数"
+                    width="420"
+                    align="center">
+            </el-table-column>
+            <el-table-column
+                    prop="value"
+                    label="值"
+                    width="420"
+                    align="center">
+            </el-table-column>
+        </el-table>
+    </template>
+</div>
+<script>
+    var Main = {}
+    var Ctor = Vue.extend(Main)
+    new Ctor().$mount('#el-table')
+</script>
+</body>
+</html>

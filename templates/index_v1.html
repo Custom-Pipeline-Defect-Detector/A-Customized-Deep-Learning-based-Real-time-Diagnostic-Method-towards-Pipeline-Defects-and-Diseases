@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管道检测系统</title>
+    {#    以下head为了实现批量上传图片#}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="static/js/vue.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="static/css/index.css">
+    <!-- 引入组件库 -->
+    <script src="static/js/index.js"></script>
+    {#    自定义组件的css#}
+    <link rel="stylesheet" href="../static/css/myindex.css">
+</head>
+
+<body>
+<div id="container">
+    <el-container>
+        <el-header>
+            {#            <el-button-group>#}
+            {#                <el-button type="primary" icon="el-icon-back" onclick="javascript:history.go(-1);"></el-button>#}
+            {#            </el-button-group>#}
+            <el-link :underline="false" href="{{ url_for("refresh") }}">管道检测系统</el-link>
+        </el-header>
+    </el-container>
+</div>
+<div id="upload" align="center">
+    <el-upload
+            class="upload-demo"
+            drag
+            action="https://jsonplaceholder.typicode.com/posts/"
+            multiple
+            name="file">
+        <i class="el-icon-upload"></i>
+        <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+        <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过500kb</div>
+    </el-upload>
+</div>
+<section id="content" style="text-align: center">
+    {#    enctype='multipart/form-data'：实现多种类型文件的上传#}
+    {% if upload_files_path %}
+        {% if VIDEO_FLAG %}
+            <h3>原始视频</h3>
+            {% for upload_file_path in upload_files_path %}
+                <video width="320" height="240" controls>
+                    <source src="{{ upload_file_path }}" type="video/mp4">
+                    <source src="{{ upload_file_path }}" type="video/ogg">
+                    <source src="{{ upload_file_path }}" type="video/webm">
+                    <object data="{{ upload_file_path }}" width="320" height="240">
+                        <embed src="{{ upload_file_path }}" width="320" height="240">
+                    </object>
+                </video>
+            {% endfor %}
+        {% else %}
+            <table align="center">
+                <h3>原始图像</h3>
+                <tr>
+                    {% for upload_file_path in upload_files_path %}
+                        <td>
+                            <img src="{{ upload_file_path }}" width="200">
+                        </td>
+                    {% endfor %}
+                </tr>
+            </table>
+        {% endif %}
+
+    {% else %}
+        <form action="/upload" enctype='multipart/form-data' method='POST'>
+            <ul class="baohan">
+                <li class="up">
+                    <div class="Input">
+                        {#                            multiple属性表示可以批量文件上传#}
+                        <input type="file" name="file" class="fileinput" multiple="multiple">
+                    </div>
+                    <div class="on">
+                        <div>
+                            <p>排序</p>
+                            <p class="del">删除</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <input class="submit" type="submit" value="提交">
+                </li>
+            </ul>
+        </form>
+
+    {% endif %}
+    <table align="center">
+        <h3>检测结果</h3>
+        <tr>
+            {% for identify_image in identify_images %}
+                <td><img src="{{ identify_image }}" alt="" width="200">
+                    <form action="/?i={{ loop.index }}" method="post">
+                        <input type="submit" id="button_advice" value="获取修复建议" align="center">
+                    </form>
+                </td>
+            {% endfor %}
+        </tr>
+    </table>
+    <table id="advice_table" align="center" border="0">
+        <h3>修复建议</h3>
+        {% for key,value in dict_advice.items() %}
+            <tr>
+                <td>{{ key }}</td>
+                <td>{{ value }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</section>
+<div id="app">
+    <template>
+        <el-table
+                :data="tableData"
+                border
+                stripe
+                size="medium"
+                style="width: 100%">
+            <el-table-column
+                    prop="attribute"
+                    label="参数"
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    prop="value"
+                    label="值"
+                    width="180">
+            </el-table-column>
+        </el-table>
+    </template>
+</div>
+
+
+</body>
+<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script>
+<script>
+    new Vue().$mount('#container')
+</script>
+<script>
+    new Vue().$mount('#upload')
+</script>
+{#批量上传图片#}
+<script>
+
+    $(document).ready(function () {
+        $(".fileinput").change(function () {
+            var file = this.files[0];
+            readFile(file, $(this).parent().siblings(".on"));
+        });
+        $(".on").mouseover(function () {
+            $(this).children("div").show();
+        });
+        $(".on").mouseout(function () {
+            $(this).children("div").hide();
+        });
+        $(".del").click(function () {
+            $(".on>div").hide();
+            $(this).parent().parent().hide();
+            $(this).parent().parent().siblings(".Input").show();
+            $(this).parent().siblings("img").remove()
+            $(".fileinput").val("");
+
+
+        });
+        var on = document.querySelector(".on");
+
+//    需要把阅读的文件传进来file element是把读取到的内容放入的容器
+        function readFile(file, element) {
+//        新建阅读器
+            var reader = new FileReader();
+//        根据文件类型选择阅读方式
+            switch (file.type) {
+                case 'image/jpg':
+                case 'image/png':
+                case 'image/jpeg':
+                case 'image/gif':
+                    reader.readAsDataURL(file);
+                    break;
+            }
+//        当文件阅读结束后执行的方法
+            reader.addEventListener('load', function () {
+//            如果说让读取的文件显示的话 还是需要通过文件的类型创建不同的标签
+                switch (file.type) {
+                    case 'image/jpg':
+                    case 'image/png':
+                    case 'image/jpeg':
+                    case 'image/gif':
+
+                        var img = document.createElement('img');
+                        img.src = reader.result;
+                        element.append(img);
+                        element.siblings(".Input").hide();
+                        element.show();
+                        break;
+                }
+            });
+        }
+
+    });
+</script>
+{#element-ui表格#}
+<script>
+    var Main = {
+        data() {
+            return {
+                tableData: [{
+                    attribute: '2016-05-02',
+                    value: '王小虎'
+                }]
+            }
+        }
+    }
+    var Ctor = Vue.extend(Main)
+    new Ctor().$mount('#app')
+</script>
+
+
+</html>
